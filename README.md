@@ -1,1 +1,1 @@
-# robot-gitlab-watcher
+# robot-gitee-repo-watcher

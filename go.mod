@@ -9,6 +9,7 @@ require (
 	github.com/sirupsen/logrus v1.8.1
 	github.com/stretchr/testify v1.7.1 // indirect
 	github.com/xanzy/go-gitlab v0.68.0
+	gopkg.in/yaml.v3 v3.0.1 // indirect
 	k8s.io/apimachinery v0.24.0
 	sigs.k8s.io/yaml v1.3.0
 )

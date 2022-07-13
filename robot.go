@@ -30,6 +30,7 @@ type iClient interface {
 	UnProtectBranch(projectID interface{}, branch string) error
 	TransferProjectNameSpace(projectID interface{}, newNameSpace string) error
 	CreateFile(projectID interface{}, file string, opts gitlab.CreateFileOptions) error
+	PatchFile(projectID interface{}, filePath, content, branch, message string) error
 }
 
 func newRobot(cli iClient, pool *ants.Pool, cfg *botConfig) *robot {

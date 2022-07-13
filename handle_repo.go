@@ -40,8 +40,6 @@ func (bot *robot) createRepo(
 			return models.RepoState{}
 		}
 
-		fmt.Println("pid === ", pid, repoName)
-
 		if s, b := bot.getRepoState(pid, log); b {
 			s.Branches = bot.handleBranch(expectRepo, s.Branches, log)
 			s.Members = bot.handleMember(expectRepo, s.Members, &s.Owner, log)
@@ -116,7 +114,6 @@ func (bot *robot) initNewlyCreatedRepo(
 		{Name: community.BranchMaster},
 	}
 	for _, item := range repoBranches {
-		fmt.Println("item.Name : ", item.Name)
 		if item.Name == community.BranchMaster {
 			if item.Type != community.BranchProtected {
 				continue
@@ -172,8 +169,6 @@ func (bot *robot) renameRepo(
 		return models.RepoState{}
 	}
 
-	fmt.Println("gid, oldRepo, pid ", gid, oldRepo, pid)
-
 	log = log.WithField("rename repo", fmt.Sprintf("from %s to %s", oldRepo, newRepo))
 	log.Info("start")
 
@@ -185,8 +180,6 @@ func (bot *robot) renameRepo(
 			Description: &expectRepo.expectRepoState.Description,
 		},
 	)
-
-	fmt.Println("update in rename err ", err)
 
 	err = bot.cli.TransferProjectNameSpace(pid, org)
 	if err != nil {

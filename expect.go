@@ -150,7 +150,6 @@ func (e *expectState) init(orgPath, sigDir string) (string, error) {
 		reposInfo.Repositories = append(reposInfo.Repositories, *singleRepo)
 	}
 	reposInfo.Validate()
-	fmt.Println("reposInfo : ", reposInfo)
 	e.reposInfo = reposInfo
 
 	org := orgPath
@@ -204,9 +203,7 @@ func (e *expectState) check(
 
 		return
 	}
-	fmt.Println("all Files : ", allFiles)
-	fmt.Println("all Sigs : ", allSigs)
-	fmt.Println("all SigInfos : ", allSigInfos)
+
 	getSHA := func(p string) string {
 		return allFiles[p]
 	}
@@ -265,9 +262,6 @@ func (e *expectState) check(
 
 	e.reposInfo.Validate()
 	repoMap := e.reposInfo.GetRepos()
-
-	fmt.Println("repo Map : ", repoMap)
-	fmt.Println("repoSigsInfo : ", repoSigsInfo)
 
 	if len(repoMap) == 0 {
 		// keep safe to do this. it is impossible to happen generally.
